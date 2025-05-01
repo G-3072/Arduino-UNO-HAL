@@ -30,7 +30,7 @@ target_link_libraries(${TARGET_NAME} INTERFACE
     UTIL
 )
 
-install(TARGETS arduino-uno-hal ADC GPIO INTERRUPT TIMER UART UTIL EXPORT arduino-uno-hal-targets)
+install(TARGETS arduino-hal ADC GPIO INTERRUPT TIMER UART UTIL EXPORT arduino-uno-hal-targets)
 install(EXPORT arduino-uno-hal-targets
         FILE arduino-hal-Targets.cmake
         NAMESPACE arduino::
