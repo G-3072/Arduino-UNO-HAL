@@ -1,7 +1,7 @@
-set(TARGET_NAME ADC)
+set(TARGET_NAME UTIL)
 
 add_library(${TARGET_NAME} STATIC
-    src/adc.c
+    src/util.c
 )
 
 target_include_directories(${TARGET_NAME} PUBLIC
