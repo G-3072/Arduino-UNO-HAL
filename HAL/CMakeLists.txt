@@ -34,5 +34,5 @@ install(TARGETS arduino-uno-hal ADC GPIO INTERRUPT TIMER UART UTIL EXPORT arduin
 install(EXPORT arduino-uno-hal-targets
         FILE arduino-hal-Targets.cmake
         NAMESPACE arduino::
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/arduino-uno-hal        
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/arduino-hal        
 )
