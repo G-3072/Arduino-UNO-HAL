@@ -1,4 +1,4 @@
-set(TARGET_NAME arduino-uno-hal)
+set(TARGET_NAME arduino-hal)
 
 add_library(${TARGET_NAME} INTERFACE)
 
