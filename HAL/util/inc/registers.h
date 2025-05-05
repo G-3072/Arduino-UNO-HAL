@@ -27,15 +27,15 @@
 #define PCMSK2  (*(volatile uint8_t *)0x6D)
 
 //timer registers
+#define TIFR0   (*(volatile uint8_t *)0x35)
 #define TIFR1   (*(volatile uint8_t *)0x36)
 #define TIFR2   (*(volatile uint8_t *)0x37)
 
 #define GTCCR   (*(volatile uint8_t *)0x43)
 
-#define TIFR0   (*(volatile uint8_t *)0x35)
 #define TCCR0A  (*(volatile uint8_t *)0x44)
 #define TCCR0B  (*(volatile uint8_t *)0x45)
-#define TCMT0   (*(volatile uint8_t *)0x46)
+#define TCNT0   (*(volatile uint8_t *)0x46)
 #define OCR0A   (*(volatile uint8_t *)0x47)
 #define OCR0B   (*(volatile uint8_t *)0x48)
 

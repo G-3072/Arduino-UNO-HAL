@@ -1,18 +1,11 @@
 #include <uart.h>
 #include <registers.h>
 
-void UART_doubleSpeed(bool enable){
+void UART_doubleSpeed(uint8_t enable){
     if(enable){
         UCSR0A |= (1<<1);
     }else{
         UCSR0A &= ~(1<<1);
-    }
-}
-void UART_multiProcessorMode(bool enable){
-    if(enable){
-        UCSR0A |= (1<<0);
-    }else{
-        UCSR0A &= ~(1<<0);
     }
 }
 
@@ -113,9 +106,9 @@ uint8_t UART_recieve(void){
     return UDR0;
 }
 
-bool UART_is_rx_ready(void){
+uint8_t UART_is_rx_ready(void){
     if(UCSR0A & (1<<7)){
-        return true;
+        return 1;
     }
-    return false;
+    return 0;
 }

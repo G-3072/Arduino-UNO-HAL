@@ -11,7 +11,12 @@ void TIMER_init(uint8_t timer, uint16_t prescaler);
 void TIMER_deinit(uint8_t timer);
 
 void TIMER_reset(uint8_t timer);
-uint16_t TIMER_getValue(uint8_t timer);
+
+uint8_t TIMER0_getValue();
+uint16_t TIMER1_getValue();
+uint8_t TIMER2_getValue();
+
+uint8_t TIMER_isOverflowed(uint8_t timer);
 
 void TIMER_delay_ms(uint16_t ms);
 void TIMER_delay_us(uint16_t us);

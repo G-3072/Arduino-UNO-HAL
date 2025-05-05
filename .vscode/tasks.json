@@ -59,7 +59,7 @@
                 "-b",
                 "115200",
                 "-U",
-                "flash:w:/home/gasc/dev/arduino-bare-metal/build/package/main/arduino-bare-metal.hex:i"
+                "flash:w:/home/gasc/dev/Arduino-UNO-HAL/build/main/Arduino-Hal.hex:i"
             ],
             "dependsOn": "buildProject"
         },
