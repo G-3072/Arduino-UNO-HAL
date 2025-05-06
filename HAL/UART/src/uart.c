@@ -67,13 +67,6 @@ void UART_setStopBit(uint8_t bits){
         UCSR0C |= (1<<3);
     }
 }
-void UART_setClockPolarity(uint8_t polarity){
-    if(polarity == TRANSMIT_FALLING_EDGE){
-        UCSR0C |= (1<<0);
-    }else if (polarity == TRANSMIT_RISING_EDGE){
-        UCSR0C &= ~(1<<0);
-    }
-}
 
 void UART_setBaudRate(uint32_t baudRate){
 

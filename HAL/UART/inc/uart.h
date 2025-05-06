@@ -7,9 +7,6 @@
 #define EVEN_PARITY 1
 #define ODD_PARITY 2
 
-#define TRANSMIT_FALLING_EDGE 0
-#define TRANSMIT_RISING_EDGE 1
-
 #define UART_MAX_ARRAY_LENGTH 50
 
 void UART_doubleSpeed(uint8_t enable);

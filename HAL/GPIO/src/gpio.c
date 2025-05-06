@@ -1,6 +1,15 @@
 #include <gpio.h>
+#include <registers.h>
+#include <stdbool.h>
 
-#define MCUCR (*(uint8_t *)0x35)
+
+void GPIO_enablePullUp(bool enabled){
+    MCUCR &= ~(1<<4);
+}
+
+void GPIO_disablePullUp(bool enabled){
+    MCUCR |= (1<<4);
+}
 /**
  * @brief 
  * 
@@ -68,44 +77,4 @@ uint8_t GPIO_readPin(GPIO_Port *port,  uint8_t pin){
     pinVal >>= pin;
     
     return pinVal;
-}
-/**
- * @brief 
- * 
- * @param port 
- * @param mode 
- */
-void GPIO_setPortMode(GPIO_Port *port, uint8_t mode){
-    port->DDR = mode;
-}
-/**
- * @brief 
- * 
- * @param port 
- * @param pull 
- */
-void GPIO_setPortPull(GPIO_Port *port, uint8_t pull){
-    MCUCR &= ~(1<<4);
-
-    port->PORT = pull;
-}
-/**
- * @brief 
- * 
- * @param port 
- * @param value 
- */
-void GPIO_writePort(GPIO_Port *port, uint8_t value){
-    port->PORT = value;
-}
-/**
- * @brief 
- * 
- * @param port 
- * @return uint8_t 
- */
-uint8_t GPIO_readPort(GPIO_Port *port){
-    uint8_t portVal = port->PIN;
-    
-    return portVal;
 }

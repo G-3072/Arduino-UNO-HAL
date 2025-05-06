@@ -8,6 +8,7 @@ target_sources(${TARGET_NAME} PRIVATE
 
 target_link_libraries(${TARGET_NAME} PRIVATE
     arduino-hal
+    HAL-TEST
 )
 
 add_custom_command(TARGET ${TARGET_NAME} POST_BUILD

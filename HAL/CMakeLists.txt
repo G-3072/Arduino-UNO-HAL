@@ -14,7 +14,6 @@ target_link_options(${TARGET_NAME} INTERFACE
     "-Wl,--gc-sections"
 )
 
-add_subdirectory(ADC)
 add_subdirectory(GPIO)
 add_subdirectory(interrupt)
 add_subdirectory(timer)
@@ -22,7 +21,6 @@ add_subdirectory(UART)
 add_subdirectory(util)
 
 target_link_libraries(${TARGET_NAME} INTERFACE
-    ADC
     GPIO
     INTERRUPT
     TIMER
@@ -30,7 +28,7 @@ target_link_libraries(${TARGET_NAME} INTERFACE
     UTIL
 )
 
-install(TARGETS arduino-hal ADC GPIO INTERRUPT TIMER UART UTIL EXPORT arduino-uno-hal-targets)
+install(TARGETS arduino-hal GPIO INTERRUPT TIMER UART UTIL EXPORT arduino-uno-hal-targets)
 install(EXPORT arduino-uno-hal-targets
         FILE arduino-hal-Targets.cmake
         NAMESPACE arduino::
