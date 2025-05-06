@@ -3,6 +3,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+typedef void (*intFuncPtr)(void);
+
+static intFuncPtr interruptVectors[25];
+
 void INT_enableGlobalInterrupts(){
     SREG |= (1<<7);
 }
@@ -200,10 +204,6 @@ void __vector_22(void) __attribute((signal, used));
 void __vector_23(void) __attribute((signal, used));
 void __vector_24(void) __attribute((signal, used));
 void __vector_25(void) __attribute((signal, used));
-
-typedef void (*intFuncPtr)(void);
-
-static intFuncPtr interruptVectors[25];
 
 void __vector_1(void) {
     if(interruptVectors[0]) interruptVectors[0]();
