@@ -17,6 +17,7 @@
     - [X] check timer overflow
     - [ ] add interrupts
     - [ ] delay functions
+    - [ ] fix error with prescaler setting
 
 - [ ] Interrupts
     - [ ] enable / disable global & individual interrupts

@@ -1,7 +1,7 @@
 #include <timer.h>
 #include <registers.h>
 
-static uint8_t getCSvalTIM0(uint16_t prescaler){
+static uint8_t getCSvalTIM01(uint16_t prescaler){
     switch(prescaler){
         case 8:
             return 2;
@@ -16,7 +16,7 @@ static uint8_t getCSvalTIM0(uint16_t prescaler){
     }
 }
 
-static uint8_t getCSvalTIM12(uint16_t prescaler){
+static uint8_t getCSvalTIM2(uint16_t prescaler){
     switch(prescaler){
         case 8:
             return 2;
@@ -39,17 +39,17 @@ void TIMER_init(uint8_t timer, uint16_t prescaler){
     switch(timer){
         case TIM0:
             TCCR0A = ~((1<<0)|(1<<1));
-            TCCR0B = getCSvalTIM0(prescaler);
+            TCCR0B = getCSvalTIM01(prescaler);
             TCNT0 = 0;
             break;
         case TIM1:
             TCCR1A = ~((1<<0)|(1<<1));
-            TCCR1B = getCSvalTIM12(prescaler);
+            TCCR1B = getCSvalTIM01(prescaler);
             TCNT1 = 0;
             break;
         case TIM2:
             TCCR2A = ~((1<<0)|(1<<1));
-            TCCR2B = getCSvalTIM12(prescaler);
+            TCCR2B = getCSvalTIM2(prescaler);
             TCNT2 = 0;
             break;
     }
