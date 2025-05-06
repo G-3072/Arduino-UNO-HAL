@@ -21,5 +21,4 @@ uint8_t TIMER_isOverflowed(uint8_t timer);
 void TIMER_delay_ms(uint16_t ms);
 void TIMER_delay_us(uint16_t us);
 
-
 #endif

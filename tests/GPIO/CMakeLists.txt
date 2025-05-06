@@ -1,7 +1,7 @@
-set(TARGET_NAME ADC)
+set(TARGET_NAME GPIO_TEST)
 
 add_library(${TARGET_NAME} STATIC
-    src/adc.c
+    src/gpio_test.c
 )
 
 target_include_directories(${TARGET_NAME} PUBLIC
@@ -10,5 +10,5 @@ target_include_directories(${TARGET_NAME} PUBLIC
 )
 
 target_link_libraries(${TARGET_NAME} PUBLIC
-
+    
 )
