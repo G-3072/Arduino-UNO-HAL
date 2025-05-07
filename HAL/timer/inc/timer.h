@@ -2,23 +2,51 @@
 #define TIMER_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
-#define TIM0 0
-#define TIM1 1
-#define TIM2 2
+enum Timers{
+    TIMER0 = 0,
+    TIMER1,
+    TIMER2
+};
 
-void TIMER_init(uint8_t timer, uint16_t prescaler);
-void TIMER_deinit(uint8_t timer);
+enum Timer_Modes{
+    NORMAL = 0,
+    CTC
+};
 
-void TIMER_reset(uint8_t timer);
+void TIMER0_init(uint8_t mode, uint8_t prescaler);
+void TIMER1_init(uint8_t mode, uint8_t prescaler);
+void TIMER2_init(uint8_t mode, uint8_t prescaler);
 
-uint8_t TIMER0_getValue();
-uint16_t TIMER1_getValue();
-uint8_t TIMER2_getValue();
+void TIMER0_stop(void);
+void TIMER1_stop(void);
+void TIMER2_stop(void);
 
-uint8_t TIMER_isOverflowed(uint8_t timer);
+void TIMER0_reset();
+void TIMER1_reset();
+void TIMER2_reset();
 
-void TIMER_delay_ms(uint16_t ms);
-void TIMER_delay_us(uint16_t us);
+void TIMER0_setCOMPA_Value(uint8_t value);
+void TIMER0_setCOMPB_Value(uint8_t value);
+
+void TIMER1_setCOMPA_Value(uint16_t value);
+void TIMER1_setCOMPB_Value(uint16_t value);
+
+void TIMER2_setCOMPA_Value(uint8_t value);
+void TIMER2_setCOMPB_Value(uint8_t value);
+
+bool TIMER0_isOverflowed(void);
+bool TIMER1_isOverflowed(void);
+bool TIMER2_isOverflowed(void);
+
+bool TIMER0_COMPA_match();
+bool TIMER0_COMPB_match();
+
+bool TIMER1_COMPA_match();
+bool TIMER1_COMPB_match();
+
+bool TIMER2_COMPA_match();
+bool TIMER2_COMPB_match();
 
 #endif
