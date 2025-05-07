@@ -12,16 +12,34 @@
     - [X] recieving char
     - [X] sending String
 
-- [ ] Timer
+- [X] Timer
     - [X] configuring Timers
     - [X] check timer overflow
-    - [ ] add interrupts
-    - [ ] delay functions
-    - [ ] fix error with prescaler setting
+    - [X] fix error with prescaler setting
 
-- [ ] Interrupts
-    - [ ] enable / disable global & individual interrupts
-    - [ ] assign function to interrupt
+- [X] Interrupts
+    - [X] enable / disable global & individual interrupts
+    - [X] assign function to interrupt
 
-    
-- [ ] ADC
+- [ ] Testing
+    - [ ] GPIO
+    - [ ] UART
+    - [ ] Interrupt
+    - [ ] Timer
+
+- [ ] add descriptions
+# open features
+- UART - sending numbers
+- UART - error handling
+
+- Timers - delays
+- Timers - CTC mode DONE
+- 
+
+- GPIO - Analog pins
+- GPIO - external interrupts DONE
+
+- interrupts - check Flags
+- 
+
+- general - basic debugging tools (uart logging, errors)

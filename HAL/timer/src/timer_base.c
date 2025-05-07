@@ -5,6 +5,8 @@
 
 static uint8_t getCSvalTIMER01(uint16_t prescaler){
     switch(prescaler){
+        case 1:
+            return 1;
         case 8:
             return 2;
         case 64:
@@ -14,12 +16,14 @@ static uint8_t getCSvalTIMER01(uint16_t prescaler){
         case 1024:
             return 5;
         default:
-            return 1;
+            return 0;
     }
 }
 
 static uint8_t getCSvalTIMER2(uint16_t prescaler){
     switch(prescaler){
+        case 1:
+            return 1;
         case 8:
             return 2;
         case 32:
@@ -33,7 +37,7 @@ static uint8_t getCSvalTIMER2(uint16_t prescaler){
         case 1024:
             return 7;
         default:
-            return 1;
+            return 0;
     }
 }
 
@@ -58,22 +62,22 @@ void TIMER1_init(uint8_t mode, uint8_t prescaler){
             TCCR1B |= (1<<3);
             TCCR1B &= ~(1<<4);
             break;
-        default:    //Normal mode is default
-            TCCR1A = 0b00;
-            TCCR1B &= ~(1<<3);
+        default:
             break;
     }
 }
 void TIMER2_init(uint8_t mode, uint8_t prescaler){
     TCCR2B = getCSvalTIMER2(prescaler);
     switch(mode){
+        case NORMAL:
+            TCCR2A = 0b00;
+            TCCR2B &= ~((1<<3)|(1<<4));
+            break;
         case CTC:
             TCCR2A = 0b10;
             TCCR2B &= ~(1<<3);
             break;
-        default:    //Normal mode is default
-            TCCR2A = 0b00;
-            TCCR2B &= ~((1<<3)|(1<<4));
+        default:
             break;
     }
 }

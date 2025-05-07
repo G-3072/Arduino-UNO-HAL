@@ -2,6 +2,7 @@
 #define INTERRUPT_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 enum InterruptNum{
     INT0 = 0,
@@ -31,12 +32,6 @@ enum InterruptNum{
     SPM_READY
 };
 
-typedef enum{
-    LOW = 0,
-    CHANGE,
-    FALLING_EDGE,
-    RISING_EDGE
-} extINTsenseMode;
 void INT_enableGlobalInterrupts();
 void INT_disableGlobalInterrupts();
 

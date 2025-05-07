@@ -18,7 +18,6 @@ void TIMER1_setCOMPB_Value(uint16_t value){
     OCR1B = value;
 }
 
-
 void TIMER2_setCOMPA_Value(uint8_t value){
     OCR2A = value;
 }

@@ -88,13 +88,6 @@ void UART_send(uint8_t value){
     UDR0 = value;
 }
 
-void UART_send_string(const uint8_t* string){
-    while(*string != 0){
-        while(!(UCSR0A & (1<<5)));
-        UDR0 = *string++;
-    }
-}
-
 uint8_t UART_recieve(void){
     return UDR0;
 }

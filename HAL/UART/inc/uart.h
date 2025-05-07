@@ -22,7 +22,9 @@ void UART_setBaudRate(uint32_t baudRate);
 uint8_t UART_is_rx_ready(void);
 
 void UART_send(uint8_t value);
-void UART_send_string(const uint8_t* string);
+
+void UART_sendString(const uint8_t* string);
+void UART_sendNumber(uint16_t number);
 
 uint8_t UART_recieve(void);
 

@@ -1,7 +1,8 @@
 set(TARGET_NAME UART)
 
 add_library(${TARGET_NAME} STATIC
-    src/uart.c
+    src/uart_base.c
+    src/uart_advanced.c
 )
 
 target_include_directories(${TARGET_NAME} PUBLIC

@@ -1,7 +1,8 @@
 set(TARGET_NAME GPIO)
 
 add_library(${TARGET_NAME} STATIC
-    src/gpio.c
+    src/gpio_base.c
+    src/gpio_interrupts.c
 )
 
 target_include_directories(${TARGET_NAME} PUBLIC
