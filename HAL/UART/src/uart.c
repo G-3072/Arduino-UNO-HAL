@@ -1,70 +1,21 @@
 #include <uart.h>
 #include <registers.h>
 
-static void init(uint32_t Baudrate, uint8_t CharSize, uint8_t Parity, uint8_t StopBits);
-static void deinit(void);
-static void setBaudrate(uint32_t Baudrate, uint8_t doubleSpeed);
-static void setParity(uint8_t Parity);
-static void setCharSize(uint8_t CharSize);
-static void setStopBits(uint8_t StopBits);
-
-static void enableTx(void);
-static void enableRx(void);
-static void disableTx(void);
-static void disableRx(void);
-
-static void sendChar(uint16_t Character);
-static void send(uint16_t *txBuffer);
-
-static uint16_t recieveChar(void);
-static void recieve(uint16_t *rxBuffer);
-
-static uint8_t isRxDone(void);
-static uint8_t isTxDone(void);
-static uint8_t isDataEmpty(void);
-static uint8_t isFrameError(void);
-static uint8_t isDataOverrun(void);
-static uint8_t isParityError(void);
-
-const struct UART_s UART = {
-    init,
-    deinit,
-    setBaudrate,
-    setParity,
-    setCharSize,
-    setStopBits,
-    disableTx,
-    disableRx,
-    enableTx,
-    enableRx,
-    sendChar,
-    send,
-    recieveChar,
-    recieve,
-    isRxDone,
-    isTxDone,
-    isDataEmpty,
-    isFrameError,
-    isDataOverrun,
-    isParityError,
-};
-
-
-static void init(uint32_t Baudrate, uint8_t CharSize, uint8_t Parity, uint8_t StopBits){
+void UART_init(uint32_t Baudrate, uint8_t CharSize, uint8_t Parity, uint8_t StopBits){
     
-    setBaudrate(Baudrate, 0);
-    setCharSize(CharSize);
-    setParity(Parity);
-    setStopBits(StopBits);
+    UART_setBaudrate(Baudrate, 0);
+    UART_setCharSize(CharSize);
+    UART_setParity(Parity);
+    UART_setStopBits(StopBits);
     //Enable Rx and Tx
-    enableRx();
-    enableTx();
+    UART_enableRx();
+    UART_enableTx();
 }
-static void deinit(void){
-    disableRx();
-    disableTx();
+void UART_deinit(void){
+    UART_disableRx();
+    UART_disableTx();
 }
-static void setBaudrate(uint32_t Baudrate, uint8_t doubleSpeed){
+void UART_setBaudrate(uint32_t Baudrate, uint8_t doubleSpeed){
     uint16_t ubrrVal = 0;
     uint8_t multiplier = 16;
 
@@ -80,7 +31,7 @@ static void setBaudrate(uint32_t Baudrate, uint8_t doubleSpeed){
     UBRR0 = ubrrVal;
 
 }
-static void setParity(uint8_t Parity){
+void UART_setParity(uint8_t Parity){
     switch(Parity){
         case DISABLED_PARITY:
             UCSR0C &= ~((1<<4)|(1<<5));
@@ -94,7 +45,7 @@ static void setParity(uint8_t Parity){
             break;
     }
 }
-static void setCharSize(uint8_t CharSize){
+void UART_setCharSize(uint8_t CharSize){
     switch(CharSize){
         case 5:
             UCSR0C &= ~(1<<1);
@@ -123,7 +74,7 @@ static void setCharSize(uint8_t CharSize){
             break;
     }
 }
-static void setStopBits(uint8_t StopBits){
+void UART_setStopBits(uint8_t StopBits){
     if (StopBits == 1){
         UCSR0C &= ~(1<<3);
     }else if (StopBits == 0){
@@ -131,20 +82,20 @@ static void setStopBits(uint8_t StopBits){
     }
 }
 
-static inline void enableTx(void){
+inline void UART_enableTx(void){
     UCSR0B |= (1<<3);
 }
-static inline void enableRx(void){
+inline void UART_enableRx(void){
     UCSR0B |= (1<<4);
 }
-static inline void disableTx(void){
+inline void UART_disableTx(void){
     UCSR0B &= ~(1<<3);
 }
-static inline void disableRx(void){
+inline void UART_disableRx(void){
     UCSR0B &= ~(1<<4);
 }
 
-static void sendChar(uint16_t Character){
+void UART_sendChar(uint16_t Character){
     while(!(UCSR0A & (1<<5)));
     if (Character & (1<<8)){
         UCSR0B |= (1<<0);
@@ -153,42 +104,42 @@ static void sendChar(uint16_t Character){
     }
     UDR0 = Character;
 }
-static void send(uint16_t *txBuffer){
+void UART_send(uint16_t *txBuffer){
     while(*txBuffer != 0){
-        sendChar(*txBuffer);
+        UART_sendChar(*txBuffer);
         txBuffer += 2;
     }
-    sendChar('\0');
+    UART_sendChar('\0');
 }
 
-static inline uint16_t recieveChar(void){
+inline uint16_t UART_recieveChar(void){
     return UDR0;
 }
-static void recieve(uint16_t *rxBuffer){
+void UART_recieve(uint16_t *rxBuffer){
     do
     {
-        while(!isRxDone());
+        while(!UART_isRxDone());
         *rxBuffer = UDR0;
         rxBuffer += 2;
             
     } while (UDR0 != 0);
 }
 
-static inline uint8_t isRxDone(void){
+inline uint8_t UART_isRxDone(void){
     return (UCSR0A & (1<<7));
 }
-static inline uint8_t isTxDone(void){
+inline uint8_t UART_isTxDone(void){
     return (UCSR0A & (1<<6));
 }
-static inline uint8_t isDataEmpty(void){
+inline uint8_t UART_isDataEmpty(void){
     return (UCSR0A & (1<<5));
 }
-static inline uint8_t isFrameError(void){
+inline uint8_t UART_isFrameError(void){
     return (UCSR0A & (1<<4));
 }
-static inline uint8_t isDataOverrun(void){
+inline uint8_t UART_isDataOverrun(void){
     return (UCSR0A & (1<<3));
 }
-static inline uint8_t isParityError(void){
+inline uint8_t UART_isParityError(void){
     return (UCSR0A & (1<<2));
 }
