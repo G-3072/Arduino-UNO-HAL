@@ -2,12 +2,21 @@
     "version": 4,
     "configurations": [
         {
-            "name": " ",
+            "name": "windows",
             "intelliSenseMode": "gcc-x86",
             "compilerPath": "/usr/bin/avr-gcc",
             "cStandard": "c11",
             "includePath": [
                 "HAL/**"
+            ]
+        },
+        {
+            "name": "mac",
+            "intelliSenseMode": "gcc-arm",
+            "compilerPath": "/opt/homebrew/bin/avr-gcc",
+            "includePath": [
+                "HAL/**",
+                "tests/**"
             ]
         }
     ]

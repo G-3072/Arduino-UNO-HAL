@@ -34,7 +34,9 @@
         "registers.h": "c",
         "sfr_defs.h": "c",
         "usart.h": "c",
-        "delay.h": "c"
+        "delay.h": "c",
+        "gpio_test.h": "c"
     },
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.default.compilerPath": "/usr/bin/avr-gcc"
 }
