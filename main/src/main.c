@@ -4,7 +4,7 @@
 #include <interrupt.h>
 #include <util/delay.h>
 
-void tim1_ovf_isr(void);
+
 
 void main(void){
 
@@ -22,6 +22,3 @@ void main(void){
     }
 }
 
-void tim1_ovf_isr(void){
-    PINB = (1<<0);
-}

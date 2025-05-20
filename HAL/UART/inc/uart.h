@@ -1,31 +1,40 @@
 #ifndef UART_H
 #define UART_H
 
-#include <registers.h>
+#include <stdint.h>
 
 #define DISABLED_PARITY 0
 #define EVEN_PARITY 1
 #define ODD_PARITY 2
 
-#define UART_MAX_ARRAY_LENGTH 50
+struct UART_s
+{
+    void (*init)(uint32_t Baudrate, uint8_t CharSize, uint8_t Parity, uint8_t StopBits);
+    void (*deinit)(void);
+    void (*setBaudrate)(uint32_t Baudrate, uint8_t doubleSpeed);
+    void (*setParity)(uint8_t Partity);
+    void (*setCharSize)(uint8_t CharSize);
+    void (*setStopBits)(uint8_t StopBits);
 
-void UART_doubleSpeed(uint8_t enable);
+    void (*disableTx)(void);
+    void (*disableRx)(void);
+    void (*enableTx)(void);
+    void (*enableRx)(void);
 
-void UART_enable(void);
-void UART_disable(void);
+    void (*sendChar)(uint16_t Character);
+    void (*send)(uint16_t *txBuffer);
 
-void UART_setCharachterSize(uint8_t size);
-void UART_setParity(uint8_t parity);
-void UART_setStopBit(uint8_t bits);
-void UART_setBaudRate(uint32_t baudRate);
+    uint16_t (*recieveChar)(void);
+    void (*recieve)(uint16_t *rxBuffer);
 
-uint8_t UART_is_rx_ready(void);
+    uint8_t (*isRxDone)(void);
+    uint8_t (*isTxDone)(void);
+    uint8_t (*isDataEmpty)(void);
+    uint8_t (*isFrameError)(void);
+    uint8_t (*isDataOverrun)(void);
+    uint8_t (*isParityError)(void);
+};
 
-void UART_send(uint8_t value);
-
-void UART_sendString(const uint8_t* string);
-void UART_sendNumber(uint16_t number);
-
-uint8_t UART_recieve(void);
+extern const struct UART_s UART;
 
 #endif
