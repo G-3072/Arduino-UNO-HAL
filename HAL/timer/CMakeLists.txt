@@ -1,8 +1,7 @@
 set(TARGET_NAME TIMER)
 
 add_library(${TARGET_NAME} STATIC
-    src/timer_base.c
-    src/timer_outputCompare.c
+    src/timer.c
 )
 
 target_include_directories(${TARGET_NAME} PUBLIC

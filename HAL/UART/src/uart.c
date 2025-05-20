@@ -1,7 +1,7 @@
 #include <uart.h>
 #include <registers.h>
 
-void UART_init(uint32_t Baudrate, uint8_t CharSize, uint8_t Parity, uint8_t StopBits){
+void UART_init(uint32_t Baudrate, uint8_t CharSize, UART_Parity Parity, uint8_t StopBits){
     
     UART_setBaudrate(Baudrate, 0);
     UART_setCharSize(CharSize);
@@ -31,7 +31,7 @@ void UART_setBaudrate(uint32_t Baudrate, uint8_t doubleSpeed){
     UBRR0 = ubrrVal;
 
 }
-void UART_setParity(uint8_t Parity){
+void UART_setParity(UART_Parity Parity){
     switch(Parity){
         case DISABLED_PARITY:
             UCSR0C &= ~((1<<4)|(1<<5));
@@ -125,21 +125,21 @@ void UART_recieve(uint16_t *rxBuffer){
     } while (UDR0 != 0);
 }
 
-inline uint8_t UART_isRxDone(void){
+inline bool UART_isRxDone(void){
     return (UCSR0A & (1<<7));
 }
-inline uint8_t UART_isTxDone(void){
+inline bool UART_isTxDone(void){
     return (UCSR0A & (1<<6));
 }
-inline uint8_t UART_isDataEmpty(void){
+inline bool UART_isDataEmpty(void){
     return (UCSR0A & (1<<5));
 }
-inline uint8_t UART_isFrameError(void){
+inline bool UART_isFrameError(void){
     return (UCSR0A & (1<<4));
 }
-inline uint8_t UART_isDataOverrun(void){
+inline bool UART_isDataOverrun(void){
     return (UCSR0A & (1<<3));
 }
-inline uint8_t UART_isParityError(void){
+inline bool UART_isParityError(void){
     return (UCSR0A & (1<<2));
 }

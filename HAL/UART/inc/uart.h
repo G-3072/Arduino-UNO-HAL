@@ -2,6 +2,7 @@
 #define UART_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 typedef enum{
     DISABLED_PARITY = 0,
@@ -31,11 +32,11 @@ void UART_send(uint16_t *txBuffer);
 uint16_t UART_recieveChar(void);
 void UART_recieve(uint16_t *rxBuffer);
 
-uint8_t UART_isRxDone(void);
-uint8_t UART_isTxDone(void);
-uint8_t UART_isDataEmpty(void);
-uint8_t UART_isFrameError(void);
-uint8_t UART_isDataOverrun(void);
-uint8_t UART_isParityError(void);
+bool UART_isRxDone(void);
+bool UART_isTxDone(void);
+bool UART_isDataEmpty(void);
+bool UART_isFrameError(void);
+bool UART_isDataOverrun(void);
+bool UART_isParityError(void);
 
 #endif

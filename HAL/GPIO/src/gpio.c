@@ -17,7 +17,7 @@ void GPIO_disablePullUp(bool enabled){
  * @param pin 
  * @param mode 
  */
-void GPIO_setPinMode(GPIO_Port *port,  uint8_t pin, uint8_t mode){
+void GPIO_setPinMode(GPIO_Port *port,  uint8_t pin, GPIO_Mode mode){
     if(port == GPIOC && pin >= 7)return;
     
     if(mode != 0){
@@ -33,7 +33,7 @@ void GPIO_setPinMode(GPIO_Port *port,  uint8_t pin, uint8_t mode){
  * @param pin 
  * @param pull 
  */
-void GPIO_setPinPull(GPIO_Port *port,  uint8_t pin, uint8_t pull){
+void GPIO_setPinPull(GPIO_Port *port,  uint8_t pin, GPIO_Pull pull){
     if(port == GPIOC && pin >= 7)return;
     MCUCR &= ~(1<<4);
 

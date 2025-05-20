@@ -11,7 +11,7 @@ void main(void){
     // INT_enableGlobalInterrupts();
     // INT_enable(TIM2_OVF);
     // INT_setISR(TIM2_OVF, tim1_ovf_isr);
-
+    UART_deinit();
     GPIO_setPinMode(GPIOB, 0, OUTPUT);
 
     // TIMER_init(TIM2, 8);

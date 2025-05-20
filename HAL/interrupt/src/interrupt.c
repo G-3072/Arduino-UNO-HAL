@@ -175,7 +175,7 @@ void INT_disableInterrupt(Interrupt_ID interrupt){
     }
 }
 
-void INT_EXTINT_setMode(Interrupt_ID EXTINT, uint8_t mode){
+void INT_EXTINT_setMode(Interrupt_ID EXTINT, EXTINT_Mode mode){
     if (EXTINT == INT0){
         switch(mode){
             case LOW:
