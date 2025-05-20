@@ -5,7 +5,9 @@
 #include <stdbool.h>
 #include <gpio.h>
 
-enum InterruptNum{
+typedef void (*intFuncPtr)(void);
+
+typedef enum{
     INT0 = 0,
     INT1,
     PCINT0,
@@ -31,24 +33,24 @@ enum InterruptNum{
     AN_COMP,
     TWI,
     SPM_READY
-};
+}Interrupt_ID;
 
-enum EXTINT_senseControl{
+typedef enum {
     LOW = 0,
     CHANGE,
     FALLING_EDGE,
     RISING_EDGE
-};
+}EXTINT_Mode;
 
 void INT_enableGlobalInterrupts();
 void INT_disableGlobalInterrupts();
 
-void INT_enable(uint8_t interrupt);
-void INT_disable(uint8_t interrupt);
+void INT_enableInterrupt(Interrupt_ID interrupt);
+void INT_disableInterrupt(Interrupt_ID interrupt);
 
-void INT_setISR(uint8_t interrupt, void (*function)(void));
+void INT_setCallback(Interrupt_ID interrupt, intFuncPtr Callback);
 
-void INT_EXTINT_setMode(uint8_t EXTINT, uint8_t mode);
+void INT_EXTINT_setMode(Interrupt_ID EXTINT, EXTINT_Mode mode);
 
 void INT_PCINT_enable(GPIO_Port *port, uint8_t pin);
 void INT_PCINT_disable(GPIO_Port *port, uint8_t pin);

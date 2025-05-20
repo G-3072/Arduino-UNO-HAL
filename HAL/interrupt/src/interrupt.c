@@ -1,9 +1,5 @@
 #include <interrupt.h>
 #include <registers.h>
-#include <stdint.h>
-#include <stdbool.h>
-
-typedef void (*intFuncPtr)(void);
 
 static intFuncPtr interruptVectors[25];
 
@@ -13,10 +9,10 @@ void INT_enableGlobalInterrupts(){
 void INT_disableGlobalInterrupts(){
     SREG &= (1<<7);
 }
-void INT_setISR(uint8_t interrupt, intFuncPtr function){
-    interruptVectors[interrupt] = function;
+void INT_setCallback(Interrupt_ID interrupt, intFuncPtr Callback){
+    interruptVectors[interrupt] = Callback;
 }
-void INT_enable(uint8_t interrupt){
+void INT_enableInterrupt(Interrupt_ID interrupt){
     switch (interrupt) {
         case INT0:
             EIMSK |= (1<<0);
@@ -97,7 +93,7 @@ void INT_enable(uint8_t interrupt){
             break;
     }
 }
-void INT_disable(uint8_t interrupt){
+void INT_disableInterrupt(Interrupt_ID interrupt){
     switch (interrupt) {
         case INT0:
             EIMSK &= ~(1<<0);
@@ -179,7 +175,7 @@ void INT_disable(uint8_t interrupt){
     }
 }
 
-void INT_EXTINT_setMode(uint8_t EXTINT, uint8_t mode){
+void INT_EXTINT_setMode(Interrupt_ID EXTINT, uint8_t mode){
     if (EXTINT == INT0){
         switch(mode){
             case LOW:

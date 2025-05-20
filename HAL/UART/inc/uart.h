@@ -3,14 +3,20 @@
 
 #include <stdint.h>
 
-#define DISABLED_PARITY 0
-#define EVEN_PARITY 1
-#define ODD_PARITY 2
+typedef enum{
+    DISABLED_PARITY = 0,
+    EVEN_PARITY,
+    ODD_PARITY
+}UART_Parity;
 
-void UART_init(uint32_t Baudrate, uint8_t CharSize, uint8_t Parity, uint8_t StopBits);
+// typedef enum{
+//     UART_8N1 = 0,
+// }UART_Configs;
+
+void UART_init(uint32_t Baudrate, uint8_t CharSize, UART_Parity Parity, uint8_t StopBits);
 void UART_deinit(void);
 void UART_setBaudrate(uint32_t Baudrate, uint8_t doubleSpeed);
-void UART_setParity(uint8_t Parity);
+void UART_setParity(UART_Parity Parity);
 void UART_setCharSize(uint8_t CharSize);
 void UART_setStopBits(uint8_t StopBits);
 
