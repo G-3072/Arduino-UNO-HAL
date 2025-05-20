@@ -35,22 +35,6 @@ void GPIO_togglePin(GPIO_Port *port,  uint8_t pin);
 uint8_t GPIO_readPin(GPIO_Port *port, uint8_t pin);
 
 //external interrupt functions
-enum EXTINT_senseControl{
-    LOW = 0,
-    CHANGE,
-    FALLING_EDGE,
-    RISING_EDGE
-};
 
-void GPIO_senseControl_INT0(uint8_t sense);
-void GPIO_senseControl_INT1(uint8_t sense);
-
-void GPIO_PCINT0_set(uint8_t pin);
-void GPIO_PCINT1_set(uint8_t pin);
-void GPIO_PCINT2_set(uint8_t pin);
-
-void GPIO_PCINT0_clear(uint8_t pin);
-void GPIO_PCINT1_clear(uint8_t pin);
-void GPIO_PCINT2_clear(uint8_t pin);
 
 #endif

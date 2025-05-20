@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <gpio.h>
 
 enum InterruptNum{
     INT0 = 0,
@@ -32,6 +33,13 @@ enum InterruptNum{
     SPM_READY
 };
 
+enum EXTINT_senseControl{
+    LOW = 0,
+    CHANGE,
+    FALLING_EDGE,
+    RISING_EDGE
+};
+
 void INT_enableGlobalInterrupts();
 void INT_disableGlobalInterrupts();
 
@@ -39,5 +47,10 @@ void INT_enable(uint8_t interrupt);
 void INT_disable(uint8_t interrupt);
 
 void INT_setISR(uint8_t interrupt, void (*function)(void));
+
+void INT_EXTINT_setMode(uint8_t EXTINT, uint8_t mode);
+
+void INT_PCINT_enable(GPIO_Port *port, uint8_t pin);
+void INT_PCINT_disable(GPIO_Port *port, uint8_t pin);
 
 #endif

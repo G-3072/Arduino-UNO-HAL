@@ -11,6 +11,7 @@
     - [X] Sending char
     - [X] recieving char
     - [X] sending String
+    - [ ] check no reserved bits are being written
 
 - [X] Timer
     - [X] configuring Timers

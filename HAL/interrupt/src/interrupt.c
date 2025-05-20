@@ -179,6 +179,78 @@ void INT_disable(uint8_t interrupt){
     }
 }
 
+void INT_EXTINT_setMode(uint8_t EXTINT, uint8_t mode){
+    if (EXTINT == INT0){
+        switch(mode){
+            case LOW:
+                EICRA &= ~((1<<0)|(1<<1));
+                break;
+            case CHANGE:
+                EICRA &= ~(1<<1);
+                EICRA |= (1<<0);
+                break;
+            case FALLING_EDGE:
+                EICRA |= (1<<1);
+                EICRA &= ~(1<<0);
+                break;
+            case RISING_EDGE:
+                EICRA |= ((1<<0)|(1<<1));
+                break;
+            default:
+                break;
+    }
+    }else if(EXTINT == INT1){
+        switch(mode){
+            case LOW:
+                EICRA &= ~((1<<2)|(1<<3));
+                break;
+            case CHANGE:
+                EICRA &= ~(1<<3);
+                EICRA |= (1<<2);
+                break;
+            case FALLING_EDGE:
+                EICRA |= (1<<3);
+                EICRA &= ~(1<<2);
+                break;
+            case RISING_EDGE:
+                EICRA |= ((1<<2)|(1<<3));
+                break;
+            default:
+                break;
+    }
+    }else{
+        return;
+    }
+}
+
+void INT_PCINT_enable(GPIO_Port *port, uint8_t pin){
+    if (pin > 7)return;
+
+    if (port == GPIOB){
+        PCMSK0 |= (1<<pin);
+    }else if(port = GPIOC){
+        if (pin < 7){
+            PCMSK1 |= (1<<pin);
+        }
+    }else if(port == GPIOD){
+        PCMSK2 |= (1<<pin);
+    }
+
+}
+void INT_PCINT_disable(GPIO_Port *port, uint8_t pin){
+    if (pin > 7)return;
+
+    if (port == GPIOB){
+        PCMSK0 &= ~(1<<pin);
+    }else if(port = GPIOC){
+        if (pin < 7){
+            PCMSK1 &= ~(1<<pin);
+        }
+    }else if(port == GPIOD){
+        PCMSK2 &= ~(1<<pin);
+    }
+}
+
 void __vector_1(void) __attribute((signal, used));
 void __vector_2(void) __attribute((signal, used));
 void __vector_3(void) __attribute((signal, used));
