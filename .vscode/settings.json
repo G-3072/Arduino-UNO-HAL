@@ -24,6 +24,13 @@
             "task": "upload 2",
             "tooltip": "Upload last built executable to arduino"
         },
+        {
+            "label": "Arduino: Upload mac",
+            "alignment": "left",
+            "task": "upload mac",
+            
+
+        }
     ],
     "files.associations": {
         "io.h": "c",

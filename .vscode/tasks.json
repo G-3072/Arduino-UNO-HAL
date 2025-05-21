@@ -65,6 +65,28 @@
             "dependsOn": "buildProject"
         },
         {
+            "label": "upload mac",
+            "type": "shell",
+            "command": "avrdude",
+            "args": [
+                "-C",
+                "/opt/homebrew/etc/avrdude.conf",
+                "-v",
+                "-p",
+                "atmega328p",
+                "-c",
+                "arduino",
+                "-P",
+                "/dev/cu.usbserial-A5069RR4",
+                "-b",
+                "115200",
+                // "-D",
+                "-U",
+                "flash:w:/Users/gasc/dev/Arduino-UNO-HAL/build/main/Arduino-Hal.hex:i"
+            ],
+            "dependsOn":"buildProject"
+        },
+        {
             "label": "rebuild",
             "dependsOn":[
                 "remove build",
