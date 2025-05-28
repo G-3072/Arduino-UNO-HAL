@@ -1,15 +1,15 @@
 #ifndef TEST_GPIO_H
 #define TEST_GPIO_H
 
-void GPIO_writePin_test(void);
-void GPIO_togglePin_test(void);
-void GPIO_readPin_test(void);
+void TEST_GPIO_writePin(void);
+void TEST_GPIO_togglePin(void);
+void TEST_GPIO_readPin(void);
 
-void GPIO_pullUp_test(void);
-void GPIO_pullDown_test(void);
+void TEST_GPIO_pullUp(void);
+void TEST_GPIO_pullDown(void);
 
-void GPIO_writePin_test_speed(void);
-void GPIO_togglePin_test_speed(void);
-void GPIO_readPin_test_speed(void);
+void TEST_GPIO_writePin_speed(void);
+void TEST_GPIO_togglePin_speed(void);
+void TEST_GPIO_readPin_speed(void);
 
 #endif

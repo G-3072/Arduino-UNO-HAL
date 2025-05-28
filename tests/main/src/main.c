@@ -1,26 +1,16 @@
-#include <gpio.h>
-#include <timer.h>
-#include <interrupt.h>
-#include <registers.h>
-
-void timOvf(void);
+// #include <test_uart.h>
+#include <uart.h>
+#include <util/delay.h>
 
 void main(void){
     
-    GPIO_setPinMode(GPIOB, 0, OUTPUT);
-
-    TIMER_init(TIMER2, TIMER_NORMAL_MODE, 1);
-
-    INT_enableGlobalInterrupts();
-    INT_enableInterrupt(TIM2_OVF);
-    INT_interruptAttach(TIM2_OVF, timOvf);
+    UART_init(9600, 8, DISABLED_PARITY, 1);
 
 
     while(1){
-        
+        UART_sendChar('A');
+        _delay_ms(1000);
     }
-}
+    // TEST_UART_sendChar();
 
-void timOvf(void){
-    PINB |= (1<<0);
 }

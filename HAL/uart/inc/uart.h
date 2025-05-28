@@ -26,11 +26,11 @@ void UART_enableRx(void);
 void UART_disableTx(void);
 void UART_disableRx(void);
 
-void UART_sendChar(uint16_t Character);
-void UART_send(uint16_t *txBuffer);
+void UART_sendChar(uint8_t Character);
+void UART_send(uint8_t *txBuffer);
 
-uint16_t UART_recieveChar(void);
-void UART_recieve(uint16_t *rxBuffer);
+uint8_t UART_recieveChar(void);
+void UART_recieve(uint8_t *rxBuffer);
 
 bool UART_isRxDone(void);
 bool UART_isTxDone(void);

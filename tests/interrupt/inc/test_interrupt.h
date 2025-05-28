@@ -1,12 +1,9 @@
 #ifndef TEST_INTERRUPT_H
 #define TEST_INTERRUPT_H
 
-void INT_enable_disable_test(void);
-
-void INT_interruptAttach_Detach_test(void);
-
-void EXTINT_mode_test(void);
-
-void PCINT_test(void);
+void TEST_INT_enable_disable(void);
+void TEST_INT_interruptAttach_Detach(void);
+void TEST_EXTINT_mode(void);
+void TEST_PCINT(void);
 
 #endif

@@ -30,52 +30,10 @@ static uint8_t TIMER_getCSValue(TIMER_ID timer, uint16_t prescaler){
 }
 
 void TIMER_init(TIMER_ID timer, TIMER_Mode mode, uint16_t prescaler){
-    
-    switch(timer){
-        case TIMER0:
-            TCCR0B = TIMER_getCSValue(TIMER0, prescaler);
-            switch(mode){
-                case TIMER_NORMAL_MODE:
-                    TCCR0A &= ~((1<<0)|(1<<1));
-                    TCCR0B &= ~(1<<3);
-                    break;
-                case TIMER_CTC_MODE:
-                    TCCR0A &= ~(1<<0);
-                    TCCR0A |= (1<<1);
-                    TCCR0B &= ~(1<<3);
-                    break;
-            }
-            break;
-        case TIMER1:
-            TCCR1B = TIMER_getCSValue(TIMER1, prescaler);
-            switch(mode){
-                case TIMER_NORMAL_MODE:
-                    TCCR1A &= ~((1<<0)|(1<<1));
-                    TCCR1B &= ~(1<<4);
-                    break;
-                case TIMER_CTC_MODE:
-                    TCCR1A &= ~((1<<0)|(1<<1));
-                    TCCR1B &= ~(1<<4);
-                    TCCR1B &= ~(1<<3);
-                    break;
-            }
-            break;
-        case TIMER2:
-            TCCR2B = TIMER_getCSValue(TIMER2, prescaler);
-            switch(mode){
-                case TIMER_NORMAL_MODE:
-                    TCCR2A &= ~((1<<0)|(1<<1));
-                    TCCR2B &= ~(1<<3);
-                    break;
-                case TIMER_CTC_MODE:
-                    TCCR2A &= ~(1<<0);
-                    TCCR2A |= (1<<1);
-                    TCCR2B &= ~(1<<3);
-                    break;
-            }
-            break;
-    }
+    TIMER_setMode(timer, mode);
+    TIMER_setPrescaler(timer, prescaler);
 }
+
 void TIMER_setMode(TIMER_ID timer, TIMER_Mode mode){
     switch(timer){
         case TIMER0:
@@ -132,7 +90,7 @@ void TIMER_setPrescaler(TIMER_ID timer, uint16_t prescaler){
             break;
     }
 }
-void TIMER_satrt(TIMER_ID timer){
+void TIMER_start(TIMER_ID timer){
     switch(timer){
         case TIMER0:
             TCCR0B = timer0_csVal;

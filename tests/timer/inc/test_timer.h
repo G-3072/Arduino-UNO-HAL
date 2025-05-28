@@ -1,6 +1,6 @@
 #ifndef TEST_TIMER_H
 #define TEST_TIMER_H
 
-void TIMER_test_prescalers
+void TEST_TIMER_prescaler(void);
 
 #endif

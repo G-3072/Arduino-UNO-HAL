@@ -67,11 +67,6 @@ void UART_setCharSize(uint8_t CharSize){
             UCSR0C |= (1<<2);
             UCSR0B &= ~(1<<2);
             break;
-        case 9:
-            UCSR0C |= (1<<1);
-            UCSR0C |= (1<<2);
-            UCSR0B |= (1<<2);
-            break;
     }
 }
 void UART_setStopBits(uint8_t StopBits){
@@ -95,7 +90,7 @@ inline void UART_disableRx(void){
     UCSR0B &= ~(1<<4);
 }
 
-void UART_sendChar(uint16_t Character){
+void UART_sendChar(uint8_t Character){
     while(!(UCSR0A & (1<<5)));
     if (Character & (1<<8)){
         UCSR0B |= (1<<0);
@@ -104,7 +99,7 @@ void UART_sendChar(uint16_t Character){
     }
     UDR0 = Character;
 }
-void UART_send(uint16_t *txBuffer){
+void UART_send(uint8_t *txBuffer){
     while(*txBuffer != 0){
         UART_sendChar(*txBuffer);
         txBuffer += 2;
@@ -112,10 +107,10 @@ void UART_send(uint16_t *txBuffer){
     UART_sendChar('\0');
 }
 
-inline uint16_t UART_recieveChar(void){
+inline uint8_t UART_recieveChar(void){
     return UDR0;
 }
-void UART_recieve(uint16_t *rxBuffer){
+void UART_recieve(uint8_t *rxBuffer){
     do
     {
         while(!UART_isRxDone());
