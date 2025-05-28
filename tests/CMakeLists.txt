@@ -1,4 +1,4 @@
-set(TARGET_NAME arduino-hal)
+set(TARGET_NAME arduino-hal-tests)
 
 add_library(${TARGET_NAME} INTERFACE)
 
@@ -6,14 +6,14 @@ add_subdirectory(gpio)
 add_subdirectory(interrupt)
 add_subdirectory(timer)
 add_subdirectory(uart)
-add_subdirectory(util)
+add_subdirectory(main)
+
 
 target_link_libraries(${TARGET_NAME} INTERFACE
-    GPIO
-    INTERRUPT
-    TIMER
-    UART
-    UTIL
+    GPIO_TEST
+    INTERRUPT_TEST
+    TIMER_TEST
+    UART_TEST
 )
 
 install(

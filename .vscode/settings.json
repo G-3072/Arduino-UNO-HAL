@@ -13,23 +13,15 @@
             "task": "rebuild",
         },
         {
-            "label": "Arduino: Upload work PC",
+            "label": "Arduino: Upload Windows",
             "alignment": "left",
-            "task": "upload",
-            "tooltip": "Upload last built executable to arduino"
-        },
-        {
-            "label": "Arduino: Upload Home PC",
-            "alignment": "left",
-            "task": "upload 2",
-            "tooltip": "Upload last built executable to arduino"
+            "task": "upload windows",
+            "tooltip": "build and upload from windows"
         },
         {
             "label": "Arduino: Upload mac",
             "alignment": "left",
-            "task": "upload mac",
-            
-
+            "task": "build and upload from mac",
         }
     ],
     "files.associations": {

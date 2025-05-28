@@ -10,6 +10,7 @@
                 "Ninja",
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DCMAKE_TOOLCHAIN_FILE=${workspaceFolder}/cmake/arduinoToolchain.cmake",
+                "-DBUILD_TESTS=ON",
                 "-B",
                 "${workspaceFolder}/build",
                 "&&",
@@ -21,12 +22,12 @@
             ],
         },
         {
-            "label": "upload",
+            "label": "upload windows",
             "type": "shell",
             "command": "/mnt/c/Users/gasc/AppData/Local/Arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin/avrdude.exe",
             "args": [
                 "-C",
-                "/home/gasc/work/arduino/arduino-bare-metal/avrdude.conf",
+                "/home/gasc/work/arduino/Arduino-UNO-HAL/avrdude.conf",
                 "-v",
                 "-p",
                 "atmega328p",
@@ -37,31 +38,10 @@
                 "-b",
                 "115200",
                 "-U",
-                "flash:w:/home/gasc/work/arduino/Arduino-UNO-HAL/build/main/Arduino-Hal.hex:i"
+                "flash:w:/home/gasc/work/arduino/Arduino-UNO-HAL/build/tests/main/arduino-hal-testing.hex:i"
             ],
             "dependsOn": "buildProject"
 
-        },
-        {
-            "label": "upload 2",
-            "type": "shell",
-            "command": "/mnt/c/Users/gaude/AppData/Local/Arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin/avrdude.exe",
-            "args": [
-                "-C",
-                "/home/gasc/dev/arduino-bare-metal/avrdude.conf",
-                "-v",
-                "-p",
-                "atmega328p",
-                "-c",
-                "arduino",
-                "-P",
-                "COM3",
-                "-b",
-                "115200",
-                "-U",
-                "flash:w:/home/gasc/dev/Arduino-UNO-HAL/build/main/Arduino-Hal.hex:i"
-            ],
-            "dependsOn": "buildProject"
         },
         {
             "label": "upload mac",
@@ -79,7 +59,6 @@
                 "/dev/cu.usbserial-A5069RR4",
                 "-b",
                 "115200",
-                // "-D",
                 "-U",
                 "flash:w:/Users/gasc/dev/Arduino-UNO-HAL/build/main/Arduino-Hal.hex:i"
             ],
@@ -100,15 +79,6 @@
                 "-rf",
                 "build/*"
             ],
-            "presentation": {
-                "echo": true,
-                "reveal": "silent",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": false,
-                "clear": false
-            },
-            "problemMatcher": []
         }
     ]
 }

@@ -51,9 +51,9 @@ void INT_disableInterrupt(Interrupt_ID interrupt);
 void INT_interruptAttach(Interrupt_ID interrupt, intFuncPtr Callback);
 void INT_interruptDetach(Interrupt_ID interrupt);
 
-void INT_EXTINT_setMode(Interrupt_ID EXTINT, EXTINT_Mode mode);
+void EXTINT_setMode(Interrupt_ID EXTINT, EXTINT_Mode mode);
 
-void INT_PCINT_enable(GPIO_Port *port, uint8_t pin);
-void INT_PCINT_disable(GPIO_Port *port, uint8_t pin);
+void PCINT_enable(GPIO_Port *port, uint8_t pin);
+void PCINT_disable(GPIO_Port *port, uint8_t pin);
 
 #endif

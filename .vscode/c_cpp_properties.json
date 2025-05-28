@@ -7,7 +7,9 @@
             "compilerPath": "/usr/bin/avr-gcc",
             "cStandard": "c11",
             "includePath": [
-                "HAL/**"
+                "HAL/**",
+                "HAL/gpio/**",
+                "tests/**"
             ]
         },
         {

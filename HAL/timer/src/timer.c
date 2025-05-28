@@ -122,14 +122,27 @@ void TIMER_setMode(TIMER_ID timer, TIMER_Mode mode){
 void TIMER_setPrescaler(TIMER_ID timer, uint16_t prescaler){
     switch(timer){
         case TIMER0:
-            TCCR0B = TIMER_getCSValue(TIMER0, prescaler);
+            timer0_csVal = TIMER_getCSValue(TIMER0, prescaler);
             break;
         case TIMER1:
-            TCCR1B = TIMER_getCSValue(TIMER1, prescaler);
+            timer1_csVal = TIMER_getCSValue(TIMER1, prescaler);
             break;
         case TIMER2:
-            TCCR2B = TIMER_getCSValue(TIMER2, prescaler);
+            timer2_csVal = TIMER_getCSValue(TIMER2, prescaler);
             break;
+    }
+}
+void TIMER_satrt(TIMER_ID timer){
+    switch(timer){
+        case TIMER0:
+            TCCR0B = timer0_csVal;
+            return;
+        case TIMER1:
+            TCCR1B = timer1_csVal;
+            return;
+        case TIMER2:
+            TCCR2B = timer2_csVal;
+            return;
     }
 }
 
