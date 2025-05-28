@@ -11,7 +11,4 @@ set(CMAKE_LINKER            avr-g++)
 set(CMAKE_OBJCOPY           avr-objcopy)
 set(CMAKE_SIZE              avr-size)
 
-set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
-set(CMAKE_BUILD_TYPE Release)
-
 set(CMAKE_C_FLAGS "-mmcu=${MCU} -Os -DF_CPU=${F_CPU} -ffunction-sections -fdata-sections")
