@@ -27,9 +27,3 @@ target_link_libraries(${TARGET_NAME} INTERFACE
     UART
     UTIL
 )
-
-install(TARGETS arduino-hal GPIO INTERRUPT TIMER UART UTIL EXPORT arduino-uno-hal-targets)
-install(EXPORT arduino-uno-hal-targets
-        FILE arduino-hal-Targets.cmake
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/arduino-hal        
-)

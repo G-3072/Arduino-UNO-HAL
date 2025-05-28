@@ -48,7 +48,8 @@ void INT_disableGlobalInterrupts();
 void INT_enableInterrupt(Interrupt_ID interrupt);
 void INT_disableInterrupt(Interrupt_ID interrupt);
 
-void INT_setCallback(Interrupt_ID interrupt, intFuncPtr Callback);
+void INT_interruptAttach(Interrupt_ID interrupt, intFuncPtr Callback);
+void INT_interruptDetach(Interrupt_ID interrupt);
 
 void INT_EXTINT_setMode(Interrupt_ID EXTINT, EXTINT_Mode mode);
 

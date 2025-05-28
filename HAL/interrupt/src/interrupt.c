@@ -9,7 +9,7 @@ void INT_enableGlobalInterrupts(){
 void INT_disableGlobalInterrupts(){
     SREG &= (1<<7);
 }
-void INT_setCallback(Interrupt_ID interrupt, intFuncPtr Callback){
+void INT_interruptAttach(Interrupt_ID interrupt, intFuncPtr Callback){
     interruptVectors[interrupt] = Callback;
 }
 void INT_enableInterrupt(Interrupt_ID interrupt){
