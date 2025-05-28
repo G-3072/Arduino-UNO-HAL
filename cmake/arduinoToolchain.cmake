@@ -15,5 +15,3 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 set(CMAKE_BUILD_TYPE Release)
 
 set(CMAKE_C_FLAGS "-mmcu=${MCU} -Os -DF_CPU=${F_CPU} -ffunction-sections -fdata-sections")
-
-set(CMAKE_EXE_LINKER_FLAGS "-Wl,--gc-sections")
