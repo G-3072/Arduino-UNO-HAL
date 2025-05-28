@@ -22,9 +22,9 @@
             ],
         },
         {
-            "label": "upload windows",
+            "label": "upload wsl",
             "type": "shell",
-            "command": "/mnt/c/Users/gasc/AppData/Local/Arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin/avrdude.exe",
+            "command": "/mnt/c/Users/gaude/AppData/Local/Arduino15/packages/arduino/tools/avrdude/6.3.0-arduino17/bin/avrdude.exe",
             "args": [
                 "-C",
                 "/home/gasc/work/arduino/Arduino-UNO-HAL/avrdude.conf",

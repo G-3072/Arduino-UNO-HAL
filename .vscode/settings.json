@@ -13,9 +13,9 @@
             "task": "rebuild",
         },
         {
-            "label": "Arduino: Upload Windows",
+            "label": "Arduino: Upload wsl",
             "alignment": "left",
-            "task": "upload windows",
+            "task": "upload wsl",
             "tooltip": "build and upload from windows"
         },
         {
