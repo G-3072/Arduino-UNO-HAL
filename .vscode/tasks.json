@@ -10,7 +10,6 @@
                 "Ninja",
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DCMAKE_TOOLCHAIN_FILE=${workspaceFolder}/cmake/arduinoToolchain.cmake",
-                "-DBUILD_TESTING=ON",
                 "-B",
                 "${workspaceFolder}/build",
                 "&&",

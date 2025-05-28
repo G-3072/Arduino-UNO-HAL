@@ -27,3 +27,11 @@ target_link_libraries(${TARGET_NAME} INTERFACE
     UART
     UTIL
 )
+
+#install headers
+install(
+    EXPORT arduino-hal-targets
+    NAMESPACE arduino-hal::
+    FILE arduino-hal-config.cmake
+    DESTINATION lib/cmake/arduino-hal
+)
